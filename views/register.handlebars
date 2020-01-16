@@ -1,3 +1,7 @@
+{{#if message}}
+<div class="alert alert-danger">{{message}}</div>
+{{/if}}
+
 <form action="/user/create" method="POST" id="registrationForm">
     <div class="form-group">
         <label for="username">Email Address: </label>

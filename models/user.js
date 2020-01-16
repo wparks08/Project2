@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     const user = sequelize.define("user", {
         username: {
             type: DataTypes.STRING(126),
@@ -13,11 +13,11 @@ module.exports = function (sequelize, DataTypes) {
         zip: DataTypes.STRING
     });
 
-    user.associate = function (models) {
+    user.associate = function(models) {
         //TODO
         //hasMany events as "attending"
         //hasMany events as "saved"
-    }
+    };
 
     return user;
-}
+};
