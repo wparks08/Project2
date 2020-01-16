@@ -3,9 +3,6 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function (req, res) {
-    if (req.user) {
-      console.log(req.user);
-    }
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("index", {
         msg: "Welcome!",
