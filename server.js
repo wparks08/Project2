@@ -20,7 +20,7 @@ app.use(passport.session());
 app.use(flash());
 
 //Passport
-require("./config/authentication")(passport);
+require("./config/authentication").config(passport);
 
 // Handlebars
 app.engine(
