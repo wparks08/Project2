@@ -15,6 +15,8 @@ module.exports = function(sequelize, DataTypes) {
 
     user.associate = function(models) {
         //TODO
+        //The below associations should be added after the 'event' table has been
+        //created.
         //hasMany events as "attending"
         //hasMany events as "saved"
     };
