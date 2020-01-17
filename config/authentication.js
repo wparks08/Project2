@@ -36,7 +36,7 @@ module.exports = {
         });
     },
     
-    isLoggedIn: function (req, res, next) {
+    secureRoute: function (req, res, next) {
         if (req.isAuthenticated()) {
             return next();
         } else {

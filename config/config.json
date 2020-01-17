@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Wipamar09+",
+    "password": "password",
     "database": "whatsapp",
     "host": "localhost",
     "dialect": "mysql"
