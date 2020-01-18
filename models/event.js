@@ -11,9 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         //    through: "users_events"
         //})
 
-        models.event.belongsTo(models.venue, {
-           through: "venue_events"
-        })
+        models.event.belongsTo(models.venue)
     }
 
     return event;
