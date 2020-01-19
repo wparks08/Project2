@@ -68,4 +68,14 @@ router.put("/:id", (req, res) => {
         });
 });
 
+router.delete("/:id", (req, res) => {
+    db.venue.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(affectedRows => {
+        res.json(affectedRows);
+    })
+})
+
 module.exports = router;
