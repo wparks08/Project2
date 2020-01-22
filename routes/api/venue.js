@@ -2,38 +2,80 @@ var router = require("express").Router();
 var db = require("../../models");
 
 router.get("/all", (req, res) => {
+    console.log(req.url);
     db.venue.findAll({}).then(venues => {
         res.json(venues);
     });
 });
 
 router.get("/:id", (req, res) => {
-    db.venue.findOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(venue => {
-        res.json(venue);
-    });
+    console.log(req.url);
+    db.venue
+        .findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(venue => {
+            res.json(venue);
+        });
+});
+
+router.get("/:id/events", (req, res) => {
+    db.venue
+        .findOne({
+            where: {
+                id: req.params.id
+            },
+            include: db.event
+        })
+        .then(venue => {
+            res.json(venue); //includes all events
+        })
+        .catch(err => {
+            res.status(500).send(
+                "Server error: Couldn't get events associated with venue:" +
+                    req.params.id
+            );
+        });
 });
 
 router.post("/create", (req, res) => {
-    // let newVenue = {
-    //     name: req.body.name,
-    //     address1: req.body.address1,
-    //     address2: req.body.address2,
-    //     city: req.body.city,
-    //     state: req.body.state,
-    //     zip: req.body.zip
-    // }
-
-    db.venue.create(req.body).then(venue => {
-        res.json(venue);
-    });
+    db.venue
+        .create(req.body)
+        .then(venue => {
+            res.json(venue);
+        })
+        .catch(err => {
+            res.status(500).send("Server error: Invalid venue");
+        });
 });
 
 router.put("/:id", (req, res) => {
+    db.venue
+        .update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(venue => {
+            res.json(venue);
+        })
+        .catch(err => {
+            res.status(500).send(
+                "Server error: Could not update Venue:" + req.params.id
+            );
+        });
+});
 
+router.delete("/:id", (req, res) => {
+    db.venue.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(affectedRows => {
+        res.json(affectedRows);
+    })
 })
 
 module.exports = router;

@@ -9,9 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     venue.associate = function(models) {
-        models.venue.hasMany(models.event, {
-            through: "venue_events"
-        });
+        models.venue.hasMany(models.event);
     }
 
     return venue;

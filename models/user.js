@@ -14,11 +14,15 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     user.associate = function(models) {
-        //TODO
-        //The below associations should be added after the 'event' table has been
-        //created.
-        //hasMany events as "attending"
-        //hasMany events as "saved"
+        models.user.belongsToMany(models.event, {
+            as: "attending",
+            through: "attendees_events"
+        });
+
+        models.user.belongsToMany(models.event, {
+            as: "saved",
+            through: "users_savedEvents"
+        });
     };
 
     return user;
