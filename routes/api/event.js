@@ -42,9 +42,9 @@ router.put("/:id", (req, res) => {
                 id: req.params.id
             }
         }
-    ).then(event => [
+    ).then(event => {
         res.json(event);
-    ])
+    })
 });
 
 router.delete("/:id", (req, res) => {
