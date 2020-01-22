@@ -16,7 +16,7 @@
         href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/maps/css-styles/routing.css' />
     <link rel='stylesheet' type='text/css'
         href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/maps/css-styles/poi.css' />
-    <script src='/script.js'></script>
+    <script src='../public/js/map.js'></script>
     <style>
         #map {
             width: 50vw;
@@ -27,7 +27,9 @@
 
 <body>
     <div id='map' class='map'></div>
-    <script type="text/javascript">
+    <!-- in case the back end does not work, the front end also counts with the same code here,
+    although coordinates will be static-->
+    <!-- <script type="text/javascript">
         function isMobileOrTablet() {
             var check = false;
             // eslint-disable-next-line
@@ -43,7 +45,7 @@
             dragPan: !window.isMobileOrTablet()
         });
         map.addControl(new tt.FullscreenControl());
-        map.addControl(new tt.NavigationControl());</script>
+        map.addControl(new tt.NavigationControl());</script> -->
 </body>
 
 </html>

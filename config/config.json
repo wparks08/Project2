@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "dmc2SQL!",
+    "password": "password",
     "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "dmc2SQL!",
+    "password": "password",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
