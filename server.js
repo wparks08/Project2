@@ -37,7 +37,6 @@ require("./routes/api")(app);
 require("./routes/userRoutes")(app); //Authentication routes
 require("./routes/htmlRoutes")(app);
 
-
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
