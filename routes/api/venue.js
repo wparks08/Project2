@@ -76,6 +76,53 @@ router.delete("/:id", (req, res) => {
     }).then(affectedRows => {
         res.json(affectedRows);
     })
+});
+
+router.post("/:id/addEvent", (req, res) => {
+    db.venue.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(venue => {
+        if (venue) {
+            db.event.create({
+                name: req.body.name,
+                dateTimeStart: req.body.dateTimeStart,
+                dateTimeEnd: req.body.dateTimeEnd
+            }).then(event => {
+                venue.addEvent(event);
+                res.status(200).send("Event added to venue");
+            })
+        } else {
+            res.status(404).send("Venue not found.");
+        }
+        
+    })
+});
+
+router.post("/:venueId/attachEvent/:eventId", (req, res) => {
+    db.venue.findOne({
+        where: {
+            id: req.params.venueId
+        }
+    }).then(venue => {
+        if (venue) {
+            db.event.findOne({
+                where: {
+                    id: req.params.eventId
+                }
+            }).then(event => {
+                if (event) {
+                    venue.addEvent(event);
+                    res.status(200).send("Event attached").
+                } else {
+                    res.status(404).send("Event not found.");
+                }
+            })
+        } else {
+            res.status(404).send("Venue not found.");
+        }
+    })
 })
 
 module.exports = router;
