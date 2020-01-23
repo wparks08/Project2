@@ -28,6 +28,34 @@ router.get("/:id/venue", (req, res) => {
     });
 });
 
+router.get("/:id/attendingUsers", (req, res) => {
+    db.event.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: {
+            model: db.user,
+            as: "attendees"
+        }
+    }).then(event => {
+        res.json(event.attendees);
+    })
+});
+
+router.get("/:id/interestedUsers", (req, res) => {
+    db.event.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: {
+            model: db.user,
+            as: "interestedUsers"
+        }
+    }).then(event => {
+        res.json(event.interestedUsers);
+    })
+})
+
 router.post("/create", (req, res) => {
     db.event.create(req.body).then(event => {
         res.json(event);
