@@ -6,7 +6,11 @@ var GeolocationParams = require("ip-geolocation-api-javascript-sdk/GeolocationPa
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
+<<<<<<< HEAD
     db.Example.findAll({}).then(function (dbExamples) {
+=======
+    db.Example.findAll({}).then(function(dbExamples) {
+>>>>>>> d629b665c7fed810abc0a5b37b376fc4dec8c43d
       res.render("index", {
         msg: "Welcome!",
         examples: dbExamples
