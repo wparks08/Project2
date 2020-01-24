@@ -8,7 +8,7 @@
   },
   "test": {
     "username": "root",
-    "password": "dmc2SQL!",
+    "password": "password",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",

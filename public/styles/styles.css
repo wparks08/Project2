@@ -1,3 +1,9 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+/*  give map rendering target some dimensions  */
+.map {
+  width: 350px;
+  height: 350px;
+}

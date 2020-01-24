@@ -32,6 +32,8 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+//Add Map routes
+require("./routes/mapRoutes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/api")(app);
 require("./routes/userRoutes")(app); //Authentication routes

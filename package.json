@@ -7,10 +7,20 @@
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
+    "test": "npm run lint && cross-env NODE_ENV=test mocha --reporter spec --exit"
   },
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+    "@tomtom-international/web-sdk-maps": "^5.43.3",
+    "@tomtom-international/web-sdk-services": "^5.43.3",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.0",
+    "express-handlebars": "^3.1.0",
+    "ip-geolocation-api-javascript-sdk": "^1.0.7",
+    "mysql2": "^1.6.5",
+    "path": "^0.12.7",
+=======
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -22,6 +32,7 @@
     "npm": "^6.13.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+>>>>>>> d629b665c7fed810abc0a5b37b376fc4dec8c43d
     "sequelize": "^5.8.6"
   },
   "devDependencies": {
@@ -31,7 +42,10 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.2",
     "prettier": "^1.17.1"
+  },
+  "resolutions": {
+    "@aws-amplify/ui": "1.0.19"
   }
 }
