@@ -35,7 +35,7 @@ router.get("/:id/events", (req, res) => {
         .catch(err => {
             res.status(500).send(
                 "Server error: Couldn't get events associated with venue:" +
-                    req.params.id
+                req.params.id
             );
         });
 });
@@ -96,7 +96,7 @@ router.post("/:id/addEvent", (req, res) => {
         } else {
             res.status(404).send("Venue not found.");
         }
-        
+
     })
 });
 
@@ -114,7 +114,7 @@ router.post("/:venueId/attachEvent/:eventId", (req, res) => {
             }).then(event => {
                 if (event) {
                     venue.addEvent(event);
-                    res.status(200).send("Event attached").
+                    res.status(200).send("Event attached");
                 } else {
                     res.status(404).send("Event not found.");
                 }
