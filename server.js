@@ -33,6 +33,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 require("./routes/apiRoutes")(app);
+require("./routes/api")(app);
 require("./routes/userRoutes")(app); //Authentication routes
 require("./routes/htmlRoutes")(app);
 
