@@ -1,6 +1,9 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var session = require("express-session");
+var passport = require("passport");
+var flash = require("connect-flash");
 
 var db = require("./models");
 
@@ -11,12 +14,20 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(session({ secret: "!?!WhatsApp!?!" }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+//Passport
+require("./controllers/authentication").config(passport);
 
 // Handlebars
 app.engine(
   "handlebars",
   exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    partialsDir: __dirname + '/views/partials/'
   })
 );
 app.set("view engine", "handlebars");
@@ -25,6 +36,8 @@ app.set("view engine", "handlebars");
 //Add Map routes
 require("./routes/mapRoutes")(app);
 require("./routes/apiRoutes")(app);
+require("./routes/api")(app);
+require("./routes/userRoutes")(app); //Authentication routes
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
@@ -36,8 +49,8 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync(syncOptions).then(function () {
+  app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
