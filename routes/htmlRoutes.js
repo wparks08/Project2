@@ -7,18 +7,17 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     console.log(req.body)
-    if (req.user != null) {
-      var authenticated = true;
-    }
-    else {
-      var authenticated = false;
-    }
-    console.log(authenticated)
+    // if (req.user != null) {
+    //   var authenticated = true;
+    // }
+    // else {
+    //   var authenticated = false;
+    // }
+    // console.log(authenticated)
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("index", {
         msg: "Welcome!",
-        examples: dbExamples,
-        isLoggedIn: authenticated
+        examples: dbExamples
       });
     });
   });

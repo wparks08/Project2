@@ -3,7 +3,7 @@
     <div class="topnav" id="myTopnav">
         <a href="/" class="active">Home</a>
         <a href="/map">Search Map</a>
-        {{#if isLoggedIn}}
+        {{#if isAuthenticated}}
         <a href="/user/logout">Logout</a>
         {{else}}
         <a href="/user/login">Login</a>
