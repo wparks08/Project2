@@ -11,19 +11,33 @@
             </div>
         </div>
         <br>
-        <h5>Or, search for something else...</h5>
-        <form class="card-body" id="search-form">
-            <label class="form-label" for="search-event">Event</label>
-            <input class="form-input" type="text" name="search-event" placeholder="Event" />
-            <br>
-            <label class="form-label" for="search-date">Date</label>
-            <input class="form-input" type="text" name="search-date" placeholder="Date" />
-            <br>
-            <label class="form-label" for="search-location">Location</label>
-            <input class="form-input" type="text" name="search-location" placeholder="Location" />
-            <br>
-            <button class="btn" type="submit">Search</button>
-        </form>
+        <div class="row">
+            <div class="col-6">
+                <form class="card-body" id="search-form">
+                    <h5>Make a new Event!</h5>
+                    <label class="form-label" for="search-event">Event</label>
+                    <input class="form-input" id="event" type="text" name="search-event" placeholder="Event" />
+                    <br>
+                    <label class="form-label" for="search-date">Starts:</label>
+                    <input class="form-input" id="starTime" type="text" name="search-date" placeholder="Date" />
+                    <br>
+                    <label class="form-label" for="search-date">End:</label>
+                    <input class="form-input" id="endTime" type="text" name="search-date" placeholder="Date" />
+                    <br>
+                    <label class="form-label" for="search-location">Location</label>
+                    <input class="form-input" id="location" type="text" name="search-location" placeholder="Location" />
+                    <br>
+                    <button class="btn" id="evetnBtn" type="submit">Make event</button>
+                </form>
+            </div>
+            <div class="col-6">
+                <h5>... Or Search Events Near Ya!</h5>
+                <label class="form-label" for="search-query">Search</label>:</label>
+                <input class="form-input" type="text" id="userSearch" name="search-query" placeholder="Search" />
+
+            </div>
+        </div>
+
     </div>
     <!--Tom Tom SDK files-->
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/services/services-web.min.js"></script>
