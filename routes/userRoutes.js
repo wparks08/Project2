@@ -56,6 +56,11 @@ module.exports = function(app) {
             });
         });
     });
+
+    app.get("/user/logout", (req, res) => {
+        req.logout();
+        res.redirect("/");
+    })
 };
 
 function validatePasswordInput(req, res, next) {
