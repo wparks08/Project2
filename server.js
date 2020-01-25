@@ -4,6 +4,7 @@ var exphbs = require("express-handlebars");
 var session = require("express-session");
 var passport = require("passport");
 var flash = require("connect-flash");
+var authentication = require("./controllers/authentication");
 
 var db = require("./models");
 
@@ -19,8 +20,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+app.use(authentication.isAuthenticated);
+
 //Passport
-require("./controllers/authentication").config(passport);
+authentication.config(passport);
 
 // Handlebars
 app.engine(
