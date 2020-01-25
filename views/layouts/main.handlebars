@@ -17,21 +17,7 @@
 </head>
 
 <body>
-  <header>
-    <h1>What Sup!</h1>
-    <div class="topnav" id="myTopnav">
-      <a href="/" class="active">Home</a>
-      <a href="./about.html">About</a>
-      <a href="/map">Search Map</a>
-      {{#if isLoggedIn}}
-      <a href="/user/login">Login</a>
-      {{else}}Logout
-      {{/if}}
-
-      <!-- Mobile responsive navigation bar -->
-      <a href="javascript:void(0);" class="icon" onclick="navBar()"><i class="fa fa-bars"></i></a>
-    </div>
-  </header>
+  {{>header}}
   {{{body}}}
 </body>
 <script type="text/javascript">

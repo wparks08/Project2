@@ -1,5 +1,5 @@
 var IPGeolocationAPI = require("ip-geolocation-api-javascript-sdk");
-var auth = require("../config/authentication");
+var auth = require("../controllers/authentication");
 
 module.exports = function (app) {
     app.get("/map", auth.secureRoute, function (req, res) {

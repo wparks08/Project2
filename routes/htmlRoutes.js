@@ -6,12 +6,14 @@ var GeolocationParams = require("ip-geolocation-api-javascript-sdk/GeolocationPa
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    if (req.User != null) {
+    console.log(req.body)
+    if (req.user != null) {
       var authenticated = true;
     }
     else {
-
+      var authenticated = false;
     }
+    console.log(authenticated)
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("index", {
         msg: "Welcome!",
