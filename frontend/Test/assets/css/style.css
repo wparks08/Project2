@@ -60,9 +60,6 @@ h1 {
         float: right;
         display: block;
     }
-}
-
-@media screen and (max-width: 600px) {
     .topnav.responsive {
         position: relative;
     }
@@ -75,6 +72,11 @@ h1 {
         float: none;
         display: block;
         text-align: left;
+    }
+    .map {
+        margin: auto;
+        width: 175px;
+        height: 175px;
     }
 }
 
