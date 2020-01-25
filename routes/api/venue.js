@@ -8,6 +8,22 @@ router.get("/all", (req, res) => {
     });
 });
 
+router.get("/search", (req, res) => {
+    db.venue.findAll({
+        where: {
+            name: {
+                [Op.like]: "%" + req.body.name + "%"
+            }
+        }
+    }).then(venues => {
+        if (venues) {
+            res.json(venues);
+        } else {
+            res.json({ message: "No venues found" });
+        }
+    })
+});
+
 router.get("/:id", (req, res) => {
     console.log(req.url);
     db.venue
