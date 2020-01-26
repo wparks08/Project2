@@ -7,15 +7,18 @@ var options = {
 
 var geocoder = NodeGeocoder(options);
 
-geocoder.geocode("1417 R Street Sacramento CA").then(function (res) {
-    console.log(res);
-})
-
-module.exports = function (address) {
+module.exports = function ({address1, city, state, zip}) {
     return new Promise((resolve, reject) => {
-        geocoder.geocode(address).then(res => {
-            //return the first result
-            resolve(res[0]);
+        geocoder.geocode({
+            address: address1,
+            city: city,
+            state: state,
+            zip: zip
+        }).then(res => {
+            resolve({
+                latitude: res[0].latitude,
+                longitude: res[0].longitude
+            });
         }).catch(err => {
             reject(err);
         })    
