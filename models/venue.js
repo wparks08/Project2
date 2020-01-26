@@ -5,7 +5,9 @@ module.exports = function(sequelize, DataTypes) {
         address2: DataTypes.STRING,
         city: DataTypes.STRING,
         state: DataTypes.STRING,
-        zip: DataTypes.STRING
+        zip: DataTypes.STRING,
+        latitude: DataTypes.DECIMAL,
+        longitude: DataTypes.DECIMAL
     });
 
     venue.associate = function(models) {
