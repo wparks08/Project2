@@ -1,9 +1,26 @@
 var router = require("express").Router();
 var db = require("../../models");
+var Op = require("sequelize").Op;
 
 router.get("/all", (req, res) => {
     db.event.findAll({}).then(events => {
         res.json(events);
+    })
+});
+
+router.get("/search", (req, res) => {
+    db.event.findAll({
+        where: {
+            name: {
+                [Op.like]: "%" + req.body.name + "%"
+            }
+        }
+    }).then(events => {
+        if (events) {
+            res.json(events);
+        } else {
+            res.json({ message: "No events found" });
+        }
     })
 });
 
