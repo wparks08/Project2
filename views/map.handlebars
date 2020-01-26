@@ -24,17 +24,32 @@
                     <label class="form-label" for="search-date">End:</label>
                     <input class="form-input" id="endTime" type="text" name="search-date" placeholder="Date" />
                     <br>
-                    <label class="form-label" for="search-location">Location</label>
-                    <input class="form-input" id="location" type="text" name="search-location" placeholder="Location" />
+                    <label class="form-label" for="search-location">Name of Venue:</label>
+                    <input class="form-input" id="location" type="text" name="search-location"
+                        placeholder="Venue Name" />
                     <br>
-                    <button class="btn" id="evetnBtn" type="submit">Make event</button>
+                    <label class="form-label" for="address">Address:</label>
+                    <input class="form-input" id="searchAdd" type="text" name="search-location"
+                        placeholder="Location" />
+                    <br>
+                    <label class="form-label" for="search-location">City:</label>
+                    <input class="form-input" id="locationCity" type="text" name="search-location" placeholder="City" />
+                    <br>
+                    <label class="form-label" for="search-location">State:</label>
+                    <input class="form-input" id="locationState" type="text" name="search-location"
+                        placeholder="State" />
+                    <br>
+                    <label class="form-label" for="search-location">Zip Code:</label>
+                    <input class="form-input" id="zipCode" type="text" name="search-location" placeholder="Zip Code" />
+                    <br>
+                    <button class="btn" id="eventBtn" type="submit">Make event</button>
                 </form>
             </div>
             <div class="col-6">
                 <h5>... Or Search Events Near Ya!</h5>
                 <label class="form-label" for="search-query">Search</label>:</label>
                 <input class="form-input" type="text" id="userSearch" name="search-query" placeholder="Search" />
-
+                <button class="btn" id="submitSearch" type="submit">Search!</button>
             </div>
         </div>
 
