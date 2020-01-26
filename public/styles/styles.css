@@ -90,7 +90,8 @@ h1 {
 }
 
 .container {
-    margin-top: 10px;
+    margin-top: 5%;
+    margin-right: 10%;
     padding: 10%;
     text-align: center;
 }
@@ -102,6 +103,11 @@ h1 {
 
 .card-header {
     background-color: gold;
+}
+
+.card-body {
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .list-group-item {
