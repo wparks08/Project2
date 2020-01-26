@@ -1,5 +1,6 @@
 var router = require("express").Router();
 var db = require("../../models");
+var geocoder = require("../../controllers/geocoder");
 
 router.get("/all", (req, res) => {
     console.log(req.url);
@@ -41,14 +42,20 @@ router.get("/:id/events", (req, res) => {
 });
 
 router.post("/create", (req, res) => {
-    db.venue
-        .create(req.body)
-        .then(venue => {
-            res.json(venue);
-        })
-        .catch(err => {
-            res.status(500).send("Server error: Invalid venue");
-        });
+    geocoder(req.body).then(coords => {
+        newVenue = req.body;
+        newVenue.latitude = coords.latitude;
+        newVenue.longitude = coords.longitude;
+
+        db.venue
+            .create(newVenue)
+            .then(venue => {
+                res.json(venue);
+            })
+            .catch(err => {
+                res.status(500).send("Server error: Invalid venue");
+            });
+    });
 });
 
 router.put("/:id", (req, res) => {
@@ -114,7 +121,7 @@ router.post("/:venueId/attachEvent/:eventId", (req, res) => {
             }).then(event => {
                 if (event) {
                     venue.addEvent(event);
-                    res.status(200).send("Event attached").
+                    res.status(200).send("Event attached")
                 } else {
                     res.status(404).send("Event not found.");
                 }
