@@ -51,5 +51,10 @@ module.exports = {
         } else {
             res.redirect("/user/login");
         }
+    },
+
+    isAuthenticated: function (req, res, next) {
+        res.locals.isAuthenticated = req.isAuthenticated();
+        return next();
     }
 } 

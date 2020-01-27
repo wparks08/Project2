@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Search What Sup!</h2>
+        </div>
+        <br>
+        <h5>Here's What Sup in your area.</h5>
+        <div class="row">
+                <div id="map" class="map"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <form class="card-body" id="search-form">
+                    <h5>Make a new Event!</h5>
+                    <label class="form-label" for="search-event">Event</label>
+                    <input class="form-input" id="event" type="text" name="search-event" placeholder="Event" />
+                    <br>
+                    <label class="form-label" for="search-date">Starts:</label>
+                    <input class="form-input" id="startTime" type="datetime-local" name="search-date" placeholder="Date" />
+                    <br>
+                    <label class="form-label" for="search-date">End:</label>
+                    <input class="form-input" id="endTime" type="datetime-local" name="search-date" placeholder="Date" />
+                    <br>
+                    <label class="form-label" for="search-location">Name of Venue:</label>
+                    <input class="form-input" id="location" type="text" name="search-location"
+                        placeholder="Venue Name" />
+                    <br>
+                    <label class="form-label" for="address">Address:</label>
+                    <input class="form-input" id="searchAdd" type="text" name="search-location"
+                        placeholder="Location" />
+                    <br>
+                    <label class="form-label" for="search-location">City:</label>
+                    <input class="form-input" id="locationCity" type="text" name="search-location" placeholder="City" />
+                    <br>
+                    <label class="form-label" for="search-location">State:</label>
+                    <input class="form-input" id="locationState" type="text" name="search-location"
+                        placeholder="State" />
+                    <br>
+                    <label class="form-label" for="search-location">Zip Code:</label>
+                    <input class="form-input" id="zipCode" type="text" name="search-location" placeholder="Zip Code" />
+                    <br>
+                    <button class="btn" id="eventBtn" type="submit">Make event</button>
+                </form>
+            </div>
+            <div class="col-6">
+                <h5>... Or Search Events Near Ya!</h5>
+                <label class="form-label" for="search-query">Search</label>:</label>
+                <input class="form-input" type="text" id="userSearch" name="search-query" placeholder="Search" />
+                <button class="btn" id="submitSearch" type="submit">Search!</button>
+            </div>
+        </div>
+
+    </div>
+    <!--Tom Tom SDK files-->
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/services/services-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/maps/maps-web.min.js"></script>
+    <script src="./js/map.js"></script>
+    <script src="./js/eventsAndSearches.js"></script>
+    <script>
+        {{!-- map = displayMap(); --}}
+        let map;
+        displayMap().then(result => {
+            map = result;
+        })
+    </script>

@@ -12,9 +12,10 @@ router.get("/search", (req, res) => {
     db.event.findAll({
         where: {
             name: {
-                [Op.like]: "%" + req.body.name + "%"
+                [Op.like]: "%" + req.query.name + "%"
             }
-        }
+        },
+        include: db.venue
     }).then(events => {
         if (events) {
             res.json(events);

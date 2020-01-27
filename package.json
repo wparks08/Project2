@@ -7,10 +7,14 @@
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
+    "test": "npm run lint && cross-env NODE_ENV=test mocha --reporter spec --exit"
   },
   "license": "ISC",
   "dependencies": {
+    "@tomtom-international/web-sdk-maps": "^5.43.3",
+    "@tomtom-international/web-sdk-services": "^5.43.3",
+    "ip-geolocation-api-javascript-sdk": "^1.0.7",
+    "path": "^0.12.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -32,7 +36,10 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.2",
     "prettier": "^1.17.1"
+  },
+  "resolutions": {
+    "@aws-amplify/ui": "1.0.19"
   }
 }

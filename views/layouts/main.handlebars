@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 
 <head>
   <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=McLaren&display=swap">
+  <!-- CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
+  <link rel="stylesheet" href="../styles/styles.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../styles/maps.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="../styles/map-marker.css" media="screen" title="no title" charset="utf-8">
+  <title>What Sup!</title>
 </head>
 
 <body>
+  {{>header}}
   {{{body}}}
 </body>
+
+<!-- Responsive navigation bar -->
+<script type="text/javascript">
+  function navBar() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+</script>
 
 </html>
