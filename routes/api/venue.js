@@ -1,6 +1,7 @@
 var router = require("express").Router();
 var db = require("../../models");
 var geocoder = require("../../controllers/geocoder");
+var Op = require("sequelize").Op;
 
 router.get("/all", (req, res) => {
     console.log(req.url);
