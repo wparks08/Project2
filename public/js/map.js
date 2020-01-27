@@ -1,4 +1,4 @@
-function displayMap(longitude, latitude) {
+function displayMap() {
     let Geolocation = window.navigator.geolocation;
     Geolocation.getCurrentPosition(function(position) {
         var map = tt.map({
