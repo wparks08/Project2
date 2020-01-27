@@ -1,16 +1,28 @@
-$(document).ready(function () {
-    var newEvent = function () {
-        $(this).eventName = $("#event").val().trim();
-        $(this).startTime = $("#startTime").val();
-        $(this).endTime = $("#endTime").val();
-    }
-    var newVenue = function () {
-        $(this).venueName = $("#location").val().trim();
-        $(this).address = $("#searchAdd").val().trim();
-        $(this).city = $("#locationCity").val().trim();
-        $(this).state = $("#locationState").val().trim();
-        $(this).zip = $("#zipCode").val().trim()
-    }
+$(document).ready(function() {
+    var newEvent = function(eventName, startTime, endTime) {
+        this.name = eventName;
+        this.dateTimeStart = startTime;
+        this.dateTimeEnd = endTime;
+    };
+    var newVenue = function(venueName, address, city, state, zip) {
+        this.name = venueName;
+        this.address1 = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        $(this).address = $("#searchAdd")
+            .val()
+            .trim();
+        $(this).city = $("#locationCity")
+            .val()
+            .trim();
+        $(this).state = $("#locationState")
+            .val()
+            .trim();
+        $(this).zip = $("#zipCode")
+            .val()
+            .trim();
+    };
     //Function to create a marker and attach it to the map
     //This is pretty much boilerplate, taken from:
     //      https://developer.tomtom.com/maps-sdk-web-js/functional-examples#examples,code,custom-markers.html
@@ -53,48 +65,71 @@ $(document).ready(function () {
     //     "#5327c3",
     //     "Popup Text (you are here?)"
     // );
-    $("#eventBtn").on("click", function () {
-        var NewPinEvent = new newEvent();
-        var NewPinLocation = new newVenue();
-        $.post(
-            "api/venue/create", NewPinLocation
-        ).done(
-            newVenue => {
-                $.post(
-                    "api/venue/" + newVenue.id + "/addEvent", NewPinEvent
-                ).done(
-                    response => {
-                        if (response.status === 200) {
-                            alert("Event Created!");
-                        }
-                    }
-                )
-            }
+    $("#eventBtn").on("click", function() {
+        event.preventDefault();
+        var NewPinEvent = new newEvent(
+            $("#event")
+                .val()
+                .trim(),
+            $("#startTime")
+                .val()
+                .trim(),
+            $("#endTime")
+                .val()
+                .trim()
         );
+        var NewPinLocation = new newVenue(
+            $("#location")
+                .val()
+                .trim(),
+            $("#searchAdd")
+                .val()
+                .trim(),
+            $("#locationCity")
+                .val()
+                .trim(),
+            $("#locationState")
+                .val()
+                .trim(),
+            $("#zipCode")
+                .val()
+                .trim()
+        );
+        $.post("api/venue/create", NewPinLocation).done(newVenue => {
+            $.post("api/venue/" + newVenue.id + "/addEvent", NewPinEvent).done(
+                response => {
+                    if (response.status === 200) {
+                        alert("Event Created!");
+                    }
+                }
+            );
+        });
         event.preventDefault();
         $("input").val("");
     });
-    var newSearch = function () {
-        $(this).name = $("#userSearch").val().trim();
+    var newSearch = function(name) {
+        this.name = name;
     };
 
-    $("#submitSearch").on("click", function () {
-        var searchQuery = new newSearch();
-        $.get(
-            "/api/event/search",
-            searchQuery
-        ).done(
-            function (res) {
-                $.get(
-                    "api/venue/search",
-                    searchQuery
-                ).done(
-                    function (response) {
-                        console.log(res, response)
-                    }
-                )
-            }
+    $("#submitSearch").on("click", function() {
+        var searchQuery = new newSearch(
+            $("#userSearch")
+                .val()
+                .trim()
         );
+        $.get("/api/event/search", searchQuery).done(function(res) {
+            $.get("api/venue/search", searchQuery).done(function(response) {
+                res.forEach(event => {
+                    createMarker(
+                        "accident.colors-white.svg",
+                        [event.venue.longitude, event.venue.latitude],
+                        "#5327c3",
+                        event.name
+                    );
+                });
+                console.log(res, response);
+            });
+        });
         $("input").val("");
-    })
+    });
 });

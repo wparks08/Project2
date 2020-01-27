@@ -14,7 +14,7 @@ router.get("/search", (req, res) => {
     db.venue.findAll({
         where: {
             name: {
-                [Op.like]: "%" + req.body.name + "%"
+                [Op.like]: "%" + req.query.name + "%"
             }
         }
     }).then(venues => {
