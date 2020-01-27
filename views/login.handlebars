@@ -1,18 +1,20 @@
-{{#if message}}
-<div class="alert alert-danger">{{message}}</div>
-<div class="text-center">
-    <h3>Not a registered user? <a href="/user/register">Signup here!</a></h3>
-</div>
-{{/if}}
+<div class="container">
+    {{#if message}}
+    <div class="alert alert-danger">{{message}}</div>
+    {{/if}}
 
-<form action="/user/login" method="POST">
-    <div class="form-group">
-        <label for="username">Username (email): </label>
-        <input name="username" id="username" class="form-control" required>
+    <form action="/user/login" method="POST">
+        <div class="form-group">
+            <label for="username" class="text-white">Username (email): </label>
+            <input name="username" id="username" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="password" class="text-white">Password: </label>
+            <input name="password" id="username" type="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <div class="text-center text-muted mt-5">
+        <h3>Not a registered user? <a href="/user/register">Signup here!</a></h3>
     </div>
-    <div class="form-group">
-        <label for="password">Password: </label>
-        <input name="password" id="username" type="password" class="form-control" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+</div>

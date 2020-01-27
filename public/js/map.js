@@ -9,5 +9,7 @@ function displayMap(longitude, latitude) {
     map.addControl(new tt.FullscreenControl());
     map.addControl(new tt.NavigationControl());
 
+    console.log(map);
+
     return map
 }

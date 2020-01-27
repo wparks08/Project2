@@ -2,7 +2,7 @@ var NodeGeocoder = require("node-geocoder");
 
 var options = {
     provider: "mapquest",
-    apiKey: "fRzrd0LXmbJgAyJmCAg3R2IuepOAMKuX"
+    apiKey: process.env.MAPQUEST_KEY
 }
 
 var geocoder = NodeGeocoder(options);
