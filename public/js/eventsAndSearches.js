@@ -46,7 +46,7 @@ $(document).ready(function() {
 
         var popup = new tt.Popup({
             offset: 30
-        }).setText(popupText);
+        }).setHTML(popupText);
         // add marker to map
         new tt.Marker({
             element: markerElement,
@@ -120,11 +120,22 @@ $(document).ready(function() {
         $.get("/api/event/search", searchQuery).done(function(res) {
             $.get("api/venue/search", searchQuery).done(function(response) {
                 res.forEach(event => {
+                    startDate = new Date(event.dateTimeEnd).toLocaleDateString();
+                    startTime = new Date(event.dateTimeStart).toLocaleTimeString();
+                    endDate = new Date(event.dateTimeEnd).toLocaleDateString();
+                    endTime = new Date(
+                        event.dateTimeEnd
+                    ).toLocaleTimeString();
+                    popupText = `
+                    <p><strong>${event.name}</strong></p>
+                    <p>${event.venue.name}</p>
+                    <p>${startDate} ${startTime} - ${endDate} ${endTime}</p>
+                    `;
                     createMarker(
                         "accident.colors-white.svg",
                         [event.venue.longitude, event.venue.latitude],
                         "#5327c3",
-                        event.name
+                        popupText
                     );
                 });
                 console.log(res, response);
