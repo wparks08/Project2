@@ -5,36 +5,48 @@
         </div>
         <br>
         <h5>Here's What Sup in your area.</h5>
-        <div class="row">
-            <div class="col-sm-4 offset-sm-4">
-                <div id="map" class="map"></div>
-            </div>
+        <div class="card-body">
+            <div id="map" class="map"></div>
         </div>
         <br>
-        <div class="row">
-            <div class="col-sm-5 offset-sm-1">
+
+        <form class="card-body" action="/user/create" method="POST" id="registrationForm">
+            <div class="form-group">
+                <h5>Post your event...</h5>
+                <label for="event">Event: </label>
+                <input name="event" id="event" placeholder="Event" required>
+                <br>
+                <label for="date-time">Date/Time: </label>
+                <input name="date-time" id="date-time" placeholder="Date/Time" required>
+                <br>
+                <label for="zipcode">Zip Code: </label>
+                <input name="zipcode" id="zipcode" placeholder="12345" required>
+                <br>
+                <button class="btn" type="post">Post</button>
             </div>
-            <div class="col-sm-5 offset-sm-1">
-                <h5>Or, search for something else...</h5>
-                <form class="card-body" id="search-form">
-                    <label class="form-label" for="search-event">Event: </label>
-                    <input class="form-input" type="text" name="search-event" placeholder="Event" />
-                    <br>
-                    <label class="form-label" for="search-date">Date: </label>
-                    <input class="form-input" type="text" name="search-date" placeholder="Date" />
-                    <br>
-                    <label class="form-label" for="search-location">Location: </label>
-                    <input class="form-input" type="text" name="search-location" placeholder="Location" />
-                    <br>
-                    <button class="btn" type="submit">Search</button>
-                </form>
+
+
+            <h5>Or, search for something else...</h5>
+            <div class="form-group">
+                <label class="form-label" for="search-event">Event: </label>
+                <input class="form-input" type="text" name="search-event" placeholder="Event" />
+                <br>
+                <label class="form-label" for="search-date">Date: </label>
+                <input class="form-input" type="text" name="search-date" placeholder="Date" />
+                <br>
+                <label class="form-label" for="search-location">Location: </label>
+                <input class="form-input" type="text" name="search-location" placeholder="Location" />
+                <br>
+                <button class="btn" type="submit">Search</button>
             </div>
-        </div>
+        </form>
     </div>
-    <!--Tom Tom SDK files-->
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/services/services-web.min.js"></script>
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/maps/maps-web.min.js"></script>
-    <script src="./js/map.js"></script>
-    <script>
-        displayMap({{ longitude }}, {{ latitude }});
-    </script>
+</div>
+</div>
+<!--Tom Tom SDK files-->
+<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/services/services-web.min.js"></script>
+<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.43.3/maps/maps-web.min.js"></script>
+<script src="./js/map.js"></script>
+<script>
+    displayMap({{ longitude }}, {{ latitude }});
+</script>
