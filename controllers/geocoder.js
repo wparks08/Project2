@@ -7,7 +7,7 @@ var options = {
 
 var geocoder = NodeGeocoder(options);
 
-module.exports = function ({address1, city, state, zip}) {
+module.exports = function ({ address1, city, state, zip }) {
     return new Promise((resolve, reject) => {
         geocoder.geocode({
             address: address1,
@@ -19,9 +19,10 @@ module.exports = function ({address1, city, state, zip}) {
                 latitude: res[0].latitude,
                 longitude: res[0].longitude
             });
+            console.log(latitude, longitude)
         }).catch(err => {
             reject(err);
-        })    
+        })
     });
-    
+
 }

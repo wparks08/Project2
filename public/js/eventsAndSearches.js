@@ -1,15 +1,15 @@
 $(document).ready(function () {
     var newEvent = function () {
         $(this).eventName = $("#event").val().trim();
-        $(this).startTime = $("#startTime").val().trim();
-        $(this).endTime = $("#endTime").val().trim();
+        $(this).startTime = $("#startTime").val();
+        $(this).endTime = $("#endTime").val();
     }
     var newVenue = function () {
         $(this).venueName = $("#location").val().trim();
-        $(this).venueAddress = $("#searchAdd").val().trim();
-        $(this).venueCity = $("#locationCity").val().trim();
-        $(this).venueState = $("#locationState").val().trim();
-        $(this).venueZip = $("#zipCode").val().trim()
+        $(this).address = $("#searchAdd").val().trim();
+        $(this).city = $("#locationCity").val().trim();
+        $(this).state = $("#locationState").val().trim();
+        $(this).zip = $("#zipCode").val().trim()
     }
     $("#eventBtn").on("click", function () {
         var NewPinEvent = new newEvent();
@@ -19,7 +19,7 @@ $(document).ready(function () {
         ).done(
             newVenue => {
                 $.post(
-                    "api/" + newVenue.id + "/addEvent", NewPinEvent
+                    "api/venue/" + newVenue.id + "/addEvent", NewPinEvent
                 ).done(
                     response => {
                         if (response.status === 200) {
@@ -29,14 +29,30 @@ $(document).ready(function () {
                 )
             }
         );
+        event.preventDefault();
         $("input").val("");
     });
     var newSearch = function () {
-        $(this).search = $("#userSearch").val().trim();
+        $(this).name = $("#userSearch").val().trim();
     };
 
     $("#submitSearch").on("click", function () {
         var searchQuery = new newSearch();
-        $.post("/api/")
+        $.post(
+            "/api/event/search",
+            searchQuery
+        ).done(
+            function (res) {
+                $.post(
+                    "api/venue/search",
+                    searchQuery
+                ).done(
+                    function (response) {
+                        console.log(res, response)
+                    }
+                )
+            }
+        );
+        $("input").val("");
     })
 });
