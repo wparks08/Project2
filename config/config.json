@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "password",
+        "password": "dmc2SQL!",
         "database": "whatsapp",
         "host": "localhost",
         "dialect": "mysql"

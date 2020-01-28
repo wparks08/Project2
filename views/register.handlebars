@@ -7,9 +7,9 @@
         <div class="alert alert-danger">{{message}}</div>
         {{/if}}
         <br>
-        <form class="card-body" action="/user/create" method="POST" id="registrationForm">
-            <div class="form-group">
-                <label for="username">User Name: </label>
+        <div class="card-body">
+            <form class="form-group" action="/user/create" method="POST" id="registrationForm">
+                <label for="username">Username: </label>
                 <input name="username" id="username" placeholder="name@email.com" required>
                 <br>
                 <label for="password">Password: </label>
@@ -26,8 +26,9 @@
                 <br>
                 <label for="zip">5 Digit Zip Code: </label>
                 <input name="zip" id="zip" placeholder="12345" required>
-            </div>
-            <button class="btn btn-primary" type="submit" name="submit" id="submit">Register</button>
-        </form>
+                <br>
+                <button class="btn btn-primary" type="submit" name="submit" id="submit">Register</button>
+            </form>
+        </div>
     </div>
 </div>
